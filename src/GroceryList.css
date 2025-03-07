@@ -1,0 +1,9 @@
+.underLine {
+    border-bottom: solid 2px rgba(104, 104, 104, 0.342);
+  }
+
+  .groceryList {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+  }

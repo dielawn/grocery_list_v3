@@ -1,0 +1,14 @@
+[
+    { "name": "Black Beans", "qty": 7, "unit": "oz", "aisle": "canned" },
+    { "name": "Cranberry Jam", "qty": 2, "unit": "oz", "aisle": "canned" },
+    { "name": "Corn", "qty": 7, "unit": "oz", "aisle": "canned" },
+    { "name": "Diced Tomatoes", "qty": 7, "unit": "oz", "aisle": "canned" },
+    { "name": "Dill Pickle", "qty": 0.5, "unit": "", "aisle": "canned" },
+    { "name": "Enchilada Sauce", "qty": 5, "unit": "oz", "aisle": "canned" },
+    { "name": "Fig Jam", "qty": 1, "unit": "TBSP", "aisle": "canned" },
+    { "name": "Marinara Sauce", "qty": 7, "unit": "oz", "aisle": "canned" },
+    { "name": "Peanut Butter", "qty": 0.5, "unit": "cup", "aisle": "bakery" },
+    { "name": "Pineapple", "qty": 2, "unit": "oz", "aisle": "canned" },
+    { "name": "Tomato Paste", "qty": 0.75, "unit": "oz", "aisle": "canned" }
+  ]
+  

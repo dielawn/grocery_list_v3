@@ -1,0 +1,11 @@
+[
+    { "name": "Baking Soda", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Brown Sugar", "qty": 0.33, "unit": "cup", "aisle": "baking" },
+    { "name": "Chocolate Chips", "qty": 0.33, "unit": "cup", "aisle": "baking" },
+    { "name": "Cinnamon", "qty": 1, "unit": "tsp", "aisle": "baking" },
+    { "name": "Cornstarch", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Flour", "qty": 0.5, "unit": "cup", "aisle": "baking" },
+    { "name": "Honey", "qty": 1, "unit": "tsp", "aisle": "baking" },
+    { "name": "Vanilla Extract", "qty": 1, "unit": "tsp", "aisle": "baking" }
+  ]
+  

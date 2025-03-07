@@ -1,0 +1,14 @@
+[
+    { "name": "Bread Crumbs", "qty": 0.125, "unit": "cup", "aisle": "baking" },
+    { "name": "Craisins", "qty": 0.6, "unit": "oz", "aisle": "snack" },
+    { "name": "Crispy Fried Onion", "qty": 0.25, "unit": "cup", "aisle": "baking" },
+    { "name": "Peanuts", "qty": 0.25, "unit": "oz", "aisle": "snack" },
+    { "name": "Pecans", "qty": 0.25, "unit": "oz", "aisle": "snack" },
+    { "name": "Pepitas", "qty": 0.25, "unit": "oz", "aisle": "baking" },
+    { "name": "Protein Powder", "qty": 0.25, "unit": "oz", "aisle": "nutrition" },
+    { "name": "Sesame Seeds", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Sliced Almonds", "qty": 0.25, "unit": "oz", "aisle": "baking" },
+    { "name": "Sun-Dried Tomatoes", "qty": 0.25, "unit": "oz", "aisle": "baking"},
+    { "name": "Sun Flower Seeds", "qty": 0.25, "unit": "oz", "aisle": "snack" }
+  ]
+  

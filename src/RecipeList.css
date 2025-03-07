@@ -1,0 +1,67 @@
+.recipeCard {  
+    box-shadow: var(--box-shadow);
+    margin: 30px; 
+    padding: 15px;
+    border-radius: 10px;
+    width: 600px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This aligns child elements vertically in the center */
+    justify-content: space-between; /* Adjusts the distribution of child elements */
+    position: relative;
+  }
+
+  .recipeImg {
+    width: 75%;  
+    max-height: 250px;
+    border-radius: 5px;
+  }
+
+  .scrollLeft, .scrollRight {
+    background-color: transparent;
+    position: absolute;
+  }
+  
+  .scrollLeft {
+    left: 0; /* Align to the left */
+    top: 45%;
+  }
+  
+  .scrollRight {
+    right: 0; /* Align to the right */
+    top: 45%;
+  }
+
+  .inListTxt {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+  }
+  @media screen and (max-width: 600px) {
+    .recipeCard {
+        width: 500px;
+    }
+    .inListTxt {
+      right: 5px;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .recipeCard {
+        width: 450px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .recipeCard {
+        width: 350px;
+    }
+  }
+  @media screen and (max-width: 350px) {
+    .recipeCard {     
+        margin: 30px; 
+        padding: 15px;
+        border-radius: 10px;
+        height: fit-content;
+        width: 300px;
+      }
+  }

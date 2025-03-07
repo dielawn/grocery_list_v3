@@ -1,0 +1,21 @@
+[
+    { "name": "Cheddar Cheese", "qty": 0.25, "unit": "cup", "aisle": "cheese" },
+    { "name": "Cream Cheese", "qty": 2, "unit": "TBSP", "aisle": "cheese" },
+    { "name": "Cream Sauce Base", "qty": 2, "unit": "oz", "aisle": "dairy" },
+    { "name": "Eggs", "qty": 1, "unit": "egg", "aisle": "dairy" },
+    { "name": "Garlic Herb Butter", "qty": 1, "unit": "Slice", "aisle": "dairy" },
+    { "name": "Gouda Cheese", "qty": 1, "unit": "Slice", "aisle": "cheese" },
+    { "name": "Italian Cheese Blend", "qty": 0.5, "unit": "cup", "aisle": "cheese" },
+    { "name": "Milk", "qty": 4, "unit": "oz", "aisle": "dairy" },
+    { "name": "Mexican Cheese Blend", "qty": 0.25, "unit": "cup", "aisle": "cheese" },
+    { "name": "Monterey Jack Cheese", "qty": 0.25, "unit": "cup", "aisle": "cheese" },
+    { "name": "Mozzarella Cheese", "qty": 0.25, "unit": "cup", "aisle": "cheese" },
+    { "name": "Parmesan Cheese", "qty": 0.25, "unit": "cup", "aisle": "cheese" },
+    { "name": "Pepper Jack Cheese", "qty": 0.25, "unit": "cup", "aisle": "cheese" },
+    { "name": "Ricotta Cheese", "qty": 4, "unit": "oz", "aisle": "cheese" },
+    { "name": "Swiss Cheese", "qty": 4, "unit": "oz", "aisle": "cheese" },
+    { "name": "Sour Cream", "qty": 1, "unit": "TBSP", "aisle": "dairy" },
+    { "name": "Yogurt", "qty": 0.25, "unit": "cup", "aisle": "dairy" },
+    { "name": "White Cheddar Cheese", "qty": 0.25, "unit": "cup", "aisle": "cheese" }
+  ]
+  

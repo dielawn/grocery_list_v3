@@ -1,0 +1,26 @@
+[
+    { "name": "Ancho Chili Powder", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Bold and Savory Steak Spice", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Cajun Spice Blend", "qty": 1, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Chili Flakes", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Chili Powder", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Chipotle Powder", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Cumin", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Dried Oregano", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Dried Thyme", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Fajita Spice Blend", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Frank's RedHot Seasoning", "qty": 0.5, "unit": "", "aisle": "baking" },
+    { "name": "Fry Seasoning", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Garlic Powder", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Harissa Powder", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Italian Seasoning", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Mexican Spice Blend", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Ranch Spice", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Smoked Paprika", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Southwest Spice Blend", "qty": 1, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Sweet and Smoky BBQ Seasoning", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Tumeric", "qty": 0.5, "unit": "tsp", "aisle": "baking" },
+    { "name": "Tuscan Heat Spice", "qty": 0.5, "unit": "TBSP", "aisle": "baking" },
+    { "name": "Old Bay Seasoning", "qty": 0.5, "unit": "TBSP", "aisle": "baking" }
+  ]
+  

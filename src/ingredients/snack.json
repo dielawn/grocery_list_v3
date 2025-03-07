@@ -1,0 +1,6 @@
+[
+    { "name": "Doritos Cool Ranch", "qty": 0.25, "unit": "bag", "aisle": "cheese" },
+    { "name": "Cheddar Ruffles", "qty": 0.25, "unit": "bag", "aisle": "cheese" },
+    { "name": "Tortilla Chips", "qty": 0.25, "unit": "bag", "aisle": "snack" }
+  ]
+  

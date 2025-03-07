@@ -1,0 +1,290 @@
+.nostr-grocery-list {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin-top: 20px;
+}
+
+.nostr-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--background-color2);
+  flex-wrap: wrap;
+}
+
+.connection-status {
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.connected {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.disconnected {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.public-key {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.public-key code {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  font-family: monospace;
+}
+
+.copy-key-btn, .qr-btn {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.copy-key-btn:hover, .qr-btn:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.qr-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+}
+
+.status-message {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-message {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #f44336;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.invites-section {
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--background-color2);
+}
+
+.invite-list {
+  list-style: none;
+  padding: 0;
+}
+
+.invite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  flex-wrap: wrap;
+}
+
+.invite-item span {
+  font-weight: bold;
+}
+
+.invite-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.invite-actions button {
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.invite-actions button:first-child {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.invite-actions button:last-child {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.sharing-section {
+  margin: 20px 0;
+}
+
+.share-btn {
+  padding: 8px 15px;
+  border-radius: 4px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.share-form {
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--background-color2);
+}
+
+.share-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.share-form input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.share-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.share-submit-btn {
+  padding: 8px 15px;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.share-qr-btn {
+  padding: 8px 15px;
+  border-radius: 4px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.list-selector {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.list-selector select {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+
+.grocery-list-container {
+  margin-top: 20px;
+}
+
+.grocery-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
+.empty-list {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: var(--background-color2);
+}
+
+.sync-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #2196F3;
+  color: white;
+}
+
+.sync-icon {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .nostr-status {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .public-key {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .invite-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .invite-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .share-form-actions {
+    flex-direction: column;
+  }
+  
+  .share-submit-btn, .share-qr-btn {
+    width: 100%;
+  }
+}

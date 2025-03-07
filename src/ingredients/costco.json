@@ -1,0 +1,65 @@
+[
+    { "name": "Batteries", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Ground Beef", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Grilled Chicken Bits", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Carne Asada", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Eggs", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Butter", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Toilet Paper", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Paper Towels", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Garbage Bags", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Dish Washer Pods", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Laundry Pods", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Dryer Sheets", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Zip-Lock Bags", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Aluminum Foil", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Sparkling Water", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Hildy's Flautas", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Hildy's Dry Food", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Hildy's Dental Treats", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Chicken Wings", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Frozen Pizza", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Frozen Hamburger Patties", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Frozen Berries", "qty": "", "unit": "", "aisle": "" },
+    
+    { "name": "Brick of Cheese", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Shredded Cheese", "qty": "", "unit": "", "aisle": "" },
+    { "name": "String Cheese", "qty": "", "unit": "", "aisle": "" },
+    
+    { "name": "Cholula", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Ketchup", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Seasonings", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Olive oil", "qty": "", "unit": "", "aisle": "" },
+    
+    { "name": "Tuna", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Peanut Butter", "qty": "", "unit": "", "aisle": "" },    
+
+    { "name": "Pho", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Mac & Cheese", "qty": "", "unit": "", "aisle": "" },
+    
+    { "name": "Black Beans", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Refried Beans", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Green Beans", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Corn", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Jasmine Rice", "qty": "", "unit": "", "aisle": "" },
+    
+    { "name": "Protein Powder", "qty": "", "unit": "", "aisle": "" },
+   
+    { "name": "Bread", "qty": "", "unit": "", "aisle": "" },
+    
+    { "name": "Shampoo", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Body Wash", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Deodorant", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Lotion", "qty": "", "unit": "", "aisle": "" },
+    { "name": "Eye Drops", "qty": "", "unit": "", "aisle": "" },    
+    { "name": "Tooth Paste", "qty": "", "unit": "", "aisle": "" },
+
+    { "name": "Nature Valley Granola Bars", "qty": "", "unit": "", "aisle": "" }
+
+]
