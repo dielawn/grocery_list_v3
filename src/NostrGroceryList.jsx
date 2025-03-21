@@ -1,10 +1,15 @@
-// Updated NostrGroceryList.jsx to include the QR code component
+// Complete NostrGroceryList.jsx with QR Scan Menu Button
 import React, { useState, useEffect } from 'react';
 import useNostr from './useNostr';
-import NostrQRCode from './NostrQRCode';
+import NostrDebug from './NostrDebug';
+import SimplifiedCameraTest from './SimplifiedCameraTest';
+import IntegratedQRScanner from './IntegratedQRScanner';
 import './NostrGroceryList.css';
 
 const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) => {
+  // State for menu visibility
+  const [isMenuVis, setIsMenuVis] = useState(false);
+
   const {
     isConnected,
     publicKey,
@@ -16,14 +21,17 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
     removeGroceryItem,
     acceptListInvite,
     declineListInvite,
-    formatPublicKey
+    formatPublicKey,
+    updateGroceryList
   } = useNostr();
 
   const [activeListId, setActiveListId] = useState(null);
   const [shareWithKey, setShareWithKey] = useState('');
   const [showShareForm, setShowShareForm] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
-  const [showQRCode, setShowQRCode] = useState(false);
+  const [showQRScanner, setShowQRScanner] = useState(false);
+  const [showDebugPanel, setShowDebugPanel] = useState(false);
+  const [showCameraTest, setShowCameraTest] = useState(false);
 
   // Initialize or sync with Nostr on load
   useEffect(() => {
@@ -33,22 +41,25 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
       console.log("Available Nostr lists:", groceryLists);
       
       // If we have grocery items and no active Nostr list, create one
-      if (currentGroceryList.length > 0 && !activeListId && groceryLists.length === 0) {
+      if (currentGroceryList?.length > 0 && !activeListId && groceryLists?.length === 0) {
         console.log("Creating new list with items:", currentGroceryList);
         const newListId = await createGroceryList('My Grocery List', currentGroceryList);
         if (newListId) {
           setActiveListId(newListId);
+          setStatusMessage('Created new shared list');
         }
-      } else if (groceryLists.length > 0 && !activeListId) {
+      } else if (groceryLists?.length > 0 && !activeListId) {
         // Use the most recently updated list as the active list
         console.log("Using existing list:", groceryLists[0]);
         setActiveListId(groceryLists[0].id);
         
         // Only override local grocery list if the user has no items
-        if (currentGroceryList.length === 0) {
+        if (!currentGroceryList || currentGroceryList.length === 0) {
           console.log("Overriding empty grocery list with Nostr list items:", groceryLists[0].items);
-          setGroceryList(groceryLists[0].items);
-          setStatusMessage(`Loaded shared list: ${groceryLists[0].name}`);
+          if (groceryLists[0].items && Array.isArray(groceryLists[0].items)) {
+            setGroceryList(groceryLists[0].items);
+            setStatusMessage(`Loaded shared list: ${groceryLists[0].name}`);
+          }
         } else {
           // Update the Nostr list with current items instead of replacing
           console.log("Updating Nostr list with current items:", currentGroceryList);
@@ -61,7 +72,7 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
     if (isConnected) {
       initializeNostrList();
     }
-  }, [isConnected, currentGroceryList, groceryLists, activeListId, createGroceryList, setGroceryList]);
+  }, [isConnected, currentGroceryList, groceryLists, activeListId, createGroceryList, setGroceryList, updateGroceryList]);
 
   // Handle item removal that syncs with Nostr
   const handleRemoveItem = async (itemName) => {
@@ -120,6 +131,7 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
     }
     
     setShareWithKey(scannedKey);
+    console.log('Scanned key:', scannedKey);
     
     // Find the active list
     const activeList = groceryLists.find(list => list.id === activeListId);
@@ -132,7 +144,7 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
     
     if (success) {
       setStatusMessage(`List shared with user: ${formatPublicKey(scannedKey)}`);
-      setShowQRCode(false); // Hide QR component after successful share
+      setShowQRScanner(false); // Hide QR component after successful share
     } else {
       setStatusMessage('Failed to share list. Check the public key and try again.');
     }
@@ -150,6 +162,18 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
     }
   };
 
+  // Close all panels
+  const closeAllPanels = () => {
+    setShowDebugPanel(false);
+    setShowCameraTest(false);
+    setShowQRScanner(false);
+  };
+
+  // Toggle menu visibility
+  const toggleMenu = () => {
+    setIsMenuVis(!isMenuVis);
+  };
+
   return (
     <div className="nostr-grocery-list">
       <div className="nostr-status">
@@ -161,14 +185,85 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
           )}
         </div>
         
-      
-       
+        <div className="public-key">
+          <span>Your ID: <code>{formatPublicKey(publicKey)}</code></span>
+        </div>
+        
+        <div style={{ display: 'flex', gap: '10px' }}>
+          {/* Debug toggle button */}
+          <button 
+            onClick={() => {
+              closeAllPanels();
+              setShowDebugPanel(!showDebugPanel);
+            }} 
+            style={{
+              backgroundColor: showDebugPanel ? '#f44336' : '#2196F3',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              padding: '4px 8px',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            {showDebugPanel ? 'Hide Debug' : 'Debug Tools'}
+          </button>
+          
+          {/* Camera test toggle button */}
+          <button 
+            onClick={() => {
+              closeAllPanels();
+              setShowCameraTest(!showCameraTest);
+            }} 
+            style={{
+              backgroundColor: showCameraTest ? '#f44336' : '#4CAF50',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              padding: '4px 8px',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            {showCameraTest ? 'Hide Camera Test' : 'Camera Test'}
+          </button>
+          
+          {/* QR Code toggle button */}
+          <button 
+            onClick={() => {
+              closeAllPanels();
+              setShowQRScanner(!showQRScanner);
+            }} 
+            style={{
+              backgroundColor: showQRScanner ? '#f44336' : '#9c27b0',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              padding: '4px 8px',
+              cursor: 'pointer',
+              fontSize: '12px'
+            }}
+          >
+            {showQRScanner ? 'Hide QR Code' : 'QR Code'}
+          </button>
+        </div>
       </div>
+
+      {/* Debug panel (conditionally rendered) */}
+      {showDebugPanel && <NostrDebug />}
+      
+      {/* Camera test panel (conditionally rendered) */}
+      {showCameraTest && <SimplifiedCameraTest />}
 
       {statusMessage && (
         <div className="status-message">
           {statusMessage}
-        
+          <button 
+            className="close-btn"
+            onClick={() => setStatusMessage('')}
+          >
+            ×
+          </button>
         </div>
       )}
 
@@ -177,18 +272,19 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
           Error: {error}
           <button 
             className="close-btn"
-            onClick={() => setError('')}
+            onClick={() => setStatusMessage('')}
           >
             ×
           </button>
         </div>
       )}
       
-      {showQRCode && (
-        <NostrQRCode onShareWithKey={handleShareViaQR} />
+      {/* Integrated QR Scanner */}
+      {showQRScanner && (
+        <IntegratedQRScanner onShareWithKey={handleShareViaQR} />
       )}
 
-      {listInvites.length > 0 && (
+      {listInvites && listInvites.length > 0 && (
         <div className="invites-section">
           <h4>List Invitations</h4>
           <ul className="invite-list">
@@ -232,9 +328,12 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
                 <button 
                   type="button" 
                   className="share-qr-btn"
-                  onClick={() => setShowQRCode(!showQRCode)}
+                  onClick={() => {
+                    closeAllPanels();
+                    setShowQRScanner(!showQRScanner);
+                  }}
                 >
-                  {showQRCode ? 'Hide QR Code' : 'Share via QR Code'}
+                  Scan QR Code
                 </button>
               </div>
             </form>
@@ -242,7 +341,27 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
         </div>
       )}
 
-      {groceryLists.length > 0 && (
+      {/* Menu item for QR code scanning */}
+      {isMenuVis && (
+        <button 
+          className="menuItem"
+          onClick={() => {
+            closeAllPanels();
+            setShowQRScanner(!showQRScanner);
+          }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}
+        >
+          <span className="material-symbols-outlined">qr_code_scanner</span>
+          QR Code
+        </button>
+      )}
+
+      {groceryLists && groceryLists.length > 0 && (
         <div className="list-selector">
           <label htmlFor="active-list">Active Shared List:</label>
           <select 
@@ -254,7 +373,7 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
               
               // Find the selected list and update local grocery items
               const selectedList = groceryLists.find(list => list.id === newActiveId);
-              if (selectedList) {
+              if (selectedList && selectedList.items && Array.isArray(selectedList.items)) {
                 setGroceryList(selectedList.items);
                 setStatusMessage(`Switched to list: ${selectedList.name}`);
               }
@@ -273,25 +392,25 @@ const NostrGroceryList = ({ currentGroceryList, setGroceryList, recipeList }) =>
       <div className="grocery-list-container">
         <h3>Grocery List: {Array.isArray(currentGroceryList) ? currentGroceryList.length : 0} items {Array.isArray(recipeList) ? recipeList.length : 0} Recipes</h3>
         
-        {Array.isArray(currentGroceryList) && currentGroceryList.map((item, index) => (
-          <div key={index} className="grocery-item underLine groceryList">
-            <p>{parseFloat(item.qty.toFixed(2))} {item.unit}</p>
-            <p className="txtPad">{item.name}</p>
-            <button 
-              className="removeBtn" 
-              onClick={() => handleRemoveItem(item.name)}
-            >
-              ❌
-            </button>
+        {Array.isArray(currentGroceryList) && currentGroceryList.length > 0 ? (
+          currentGroceryList.map((item, index) => (
+            <div key={index} className="grocery-item underLine groceryList">
+              <p>{parseFloat(item.qty.toFixed(2))} {item.unit}</p>
+              <p className="txtPad">{item.name}</p>
+              <button 
+                className="removeBtn" 
+                onClick={() => handleRemoveItem(item.name)}
+              >
+                ❌
+              </button>
+            </div>
+          ))
+        ) : (
+          <div className="empty-list">
+            <p>Your grocery list is empty.</p>
           </div>
-        ))}
+        )}
       </div>
-
-      {!currentGroceryList || (Array.isArray(currentGroceryList) && currentGroceryList.length === 0) && (
-        <div className="empty-list">
-          <p>Your grocery list is empty.</p>
-        </div>
-      )}
 
       {activeListId && isConnected && (
         <div className="sync-status">
