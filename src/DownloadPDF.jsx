@@ -8,7 +8,7 @@ export const DownloadPDF = ({ groceryList, recipeList }) => {
     return (
         <>
         {groceryList.length > 0  && 
-            <PDFDownloadLink className="material-symbols-outlined pdfLink"
+            <PDFDownloadLink className="material-symbols-outlined menuItem"
               document={<GeneratePDF groceryList={groceryList} recipeList={recipeList} />}
               fileName="grocery-and-recipes.pdf">
               {({ blob, url, loading, error }) =>

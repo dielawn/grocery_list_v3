@@ -12,6 +12,8 @@ import { useTheme } from './Theme'
 import ScrollToTopButton from './TopBtn.jsx'
 import { AisleSelect } from './AisleSelect'
 import NostrGroceryList from './NostrGroceryList.jsx'
+import ModifiedQRScanner from './ModifiedQRScanner.jsx'
+import { CustomItemForm } from './CustomItemForm';
 
 function App() {
   const [groceryList, setGroceryList] = useState([]) 
@@ -21,11 +23,13 @@ function App() {
   const [servingSize, setServingSize] = useState(2)
   const [isRecipeListVis, setIsRecipeListVis] = useState(true)
   const [isMenuVis, setIsMenuVis] = useState(false)
+  const [isCustomItemFormVis, setIsCustomItemFormVis] = useState(false)
   const [sortedGroceryList, setSortedGroceryList] = useState([])
-  const [aisleOrder, setAisleOrder] =  useState(['dairy', 'freezer', 'cheese', 'snack', 'butcher', 'ethnic', 'noodle',  'canned', 'baking', 'cereal', 'condiment', 'bakery', 'produce', 'nutrition', ''])
+  const [aisleOrder, setAisleOrder] = useState(['dairy', 'freezer', 'cheese', 'snack', 'butcher', 'ethnic', 'noodle',  'canned', 'baking', 'cereal', 'condiment', 'bakery', 'produce', 'nutrition', ''])
   const { theme, toggleTheme } = useTheme()
   const [isTopBtnVis, setIsTopBtnVis] = useState(false)
-  const [isNostrEnabled, setIsNostrEnabled] = useState(false) // New state for Nostr toggle
+  const [isNostrEnabled, setIsNostrEnabled] = useState(false) // State for Nostr toggle
+  const [showQRScanner, setShowQRScanner] = useState(false) // State for QR scanner visibility
 
   function toggleVis(el) {
     switch(el) {
@@ -35,6 +39,8 @@ function App() {
       case 'list':
         setIsRecipeListVis(!isRecipeListVis)
         break;
+      case 'item':
+        setIsCustomItemFormVis(!isCustomItemFormVis)
       case 'initialState':
         setIsMenuVis(false)
         setIsRecipeListVis(true)
@@ -81,6 +87,12 @@ function App() {
     addAndConsolidate(recipeIngredients)
     addToRecipeList(recipeName)
    }
+
+   function addCustomItem(newItem) {
+    console.log('Adding custom item:', newItem);
+    const newList = [...groceryList, newItem];
+    setGroceryList(newList);
+  }
 
    function deleteList() {
     setGroceryList([])
@@ -137,7 +149,7 @@ function App() {
                   'dark_mode'}
               </span>
           </button>
-
+          <button className="menuItem" onClick={() => toggleVis('item')}>Add Custom Item</button>
           <button className='menuItem' onClick={() => alert('coming soon...')}><span className="material-symbols-outlined">share</span></button>
           
           {/* Toggle Nostr sync feature */}
@@ -162,14 +174,104 @@ function App() {
         <ServingSizeSelect  setServingSize={setServingSize} servingSize={servingSize} groceryList={groceryList} setGroceryList={setGroceryList}/>
       </div>
       }
+    <CustomItemForm addCustomItem={addCustomItem} />
+  
 
       {isRecipeListVis ? (
   matchingRecipes.length > 0 ? (
     <div className='recipeDiv'>
-    <RecipesList list={matchingRecipes} addToLists={addToLists} recipeList={recipeList} />
+      {/* Add QR Scanner button in recipe view when Nostr is enabled */}
+      {isNostrEnabled && !showQRScanner && (
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0', width: '100%' }}>
+          <button 
+            className="qrScanBtn"
+            onClick={() => setShowQRScanner(true)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              margin: '10px 0',
+              backgroundColor: '#9c27b0',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              padding: '10px 20px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              width: '100%',
+              maxWidth: '200px'
+            }}
+          >
+            <span className="material-symbols-outlined">qr_code_scanner</span>
+            Scan QR Code
+          </button>
+        </div>
+      )}
+      
+      {/* Show QR Scanner when requested */}
+      {showQRScanner && (
+        <div style={{ position: 'relative', width: '100%' }}>
+          <ModifiedQRScanner 
+            onShareWithKey={(key) => {
+              console.log("Scanned key:", key);
+              // Handle the scanned key here - connect with user
+              setShowQRScanner(false); // Hide scanner after successful scan
+            }}
+            onClose={() => setShowQRScanner(false)}
+          />
+        </div>
+      )}
+      
+      <RecipesList list={matchingRecipes} addToLists={addToLists} recipeList={recipeList} />
     </div>
   ) : (
     <div className='recipeDiv'>
+      {/* Add QR Scanner button in recipe view when Nostr is enabled */}
+      {isNostrEnabled && !showQRScanner && (
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0', width: '100%' }}>
+          <button 
+            className="qrScanBtn"
+            onClick={() => setShowQRScanner(true)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              margin: '10px 0',
+              backgroundColor: '#9c27b0',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              padding: '10px 20px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              width: '100%',
+              maxWidth: '200px'
+            }}
+          >
+            <span className="material-symbols-outlined">qr_code_scanner</span>
+            Scan QR Code
+          </button>
+        </div>
+      )}
+      
+      {/* Show QR Scanner when requested */}
+      {showQRScanner && (
+        <div style={{ position: 'relative', width: '100%' }}>
+          <ModifiedQRScanner 
+            onShareWithKey={(key) => {
+              console.log("Scanned key:", key);
+              // Handle the scanned key here - connect with user
+              setShowQRScanner(false); // Hide scanner after successful scan
+            }}
+            onClose={() => setShowQRScanner(false)}
+          />
+        </div>
+      )}
+      
       <RecipesList addToLists={addToLists} recipeList={recipeList} list={recipes} />
     </div>
   )
