@@ -1,15 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './CustomItemForm.css';
 
-export function CustomItemForm({ addCustomItem }) {
+export function CustomItemForm({ addCustomItem, aisleOrder }) {
     const [name, setName] = useState('');
     const [qty, setQty] = useState(1);
     const [unit, setUnit] = useState('');
     const [aisle, setAisle] = useState('');
     const [showForm, setShowForm] = useState(false);
+    const [availableAisles, setAvailableAisles] = useState([]);
 
     // Common units for dropdown
     const units = ['', 'oz', 'cup', 'tsp', 'TBSP', 'slice', 'can', 'package', 'lb'];
+
+    // Use the aisleOrder prop to set available aisles
+    useEffect(() => {
+        if (Array.isArray(aisleOrder) && aisleOrder.length > 0) {
+            setAvailableAisles(aisleOrder);
+        } else {
+            // Fallback if aisleOrder is not provided
+            setAvailableAisles([
+                'produce', 'dairy', 'freezer', 'butcher', 'baking', 
+                'canned', 'condiment', 'snack', 'cheese', 'ethnic', 
+                'noodle', 'cereal', 'bakery', 'nutrition', ''
+            ]);
+        }
+    }, [aisleOrder]);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -39,6 +54,8 @@ export function CustomItemForm({ addCustomItem }) {
         
         // Option: close form after adding item
         // setShowForm(false);
+        
+        console.log('Added item with aisle:', aisle);
     }
 
     return (
@@ -113,20 +130,11 @@ export function CustomItemForm({ addCustomItem }) {
                                     onChange={(e) => setAisle(e.target.value)}
                                 >
                                     <option value="">Select aisle</option>
-                                    <option value="produce">Produce</option>
-                                    <option value="dairy">Dairy</option>
-                                    <option value="freezer">Freezer</option>
-                                    <option value="butcher">Butcher</option>
-                                    <option value="baking">Baking</option>
-                                    <option value="canned">Canned Goods</option>
-                                    <option value="condiment">Condiments</option>
-                                    <option value="snack">Snacks</option>
-                                    <option value="cheese">Cheese</option>
-                                    <option value="ethnic">Ethnic</option>
-                                    <option value="noodle">Pasta/Rice</option>
-                                    <option value="cereal">Cereal</option>
-                                    <option value="bakery">Bakery</option>
-                                    <option value="nutrition">Nutrition</option>
+                                    {availableAisles.map(aisleOption => (
+                                        <option key={aisleOption} value={aisleOption}>
+                                            {aisleOption ? aisleOption.charAt(0).toUpperCase() + aisleOption.slice(1) : 'Uncategorized'}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                         </div>

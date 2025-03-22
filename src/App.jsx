@@ -89,9 +89,9 @@ function App() {
    }
 
    function addCustomItem(newItem) {
-    console.log('Adding custom item:', newItem);
     const newList = [...groceryList, newItem];
     setGroceryList(newList);
+    sortList(); // Call sort immediately to update the order
   }
 
    function deleteList() {
@@ -174,7 +174,7 @@ function App() {
         <ServingSizeSelect  setServingSize={setServingSize} servingSize={servingSize} groceryList={groceryList} setGroceryList={setGroceryList}/>
       </div>
       }
-    <CustomItemForm addCustomItem={addCustomItem} />
+    <CustomItemForm addCustomItem={addCustomItem} aisleOrder={aisleOrder} />
   
 
       {isRecipeListVis ? (
